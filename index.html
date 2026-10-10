@@ -1,37 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> VinitX </title>
+
+    <meta name="description" content="VINITX AI - A smart general-purpose AI assistant created by Vinit Goswami.">
+
+    <title>VINITX AI</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="chat-container">
+    <div class="app">
 
-    <div class="header">
-        AI Chatbot
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="logo">V</div>
+
+                <div>
+                    <h2>VINITX</h2>
+                    <span>AI Assistant</span>
+                </div>
+            </div>
+
+            <button class="new-chat" id="newChatBtn">
+                <span>＋</span>
+                New Chat
+            </button>
+
+            <div class="sidebar-section">
+                <p>QUICK ACCESS</p>
+
+                <button class="side-btn">
+                    💬 New Conversation
+                </button>
+
+                <button class="side-btn">
+                    💻 Coding Help
+                </button>
+
+                <button class="side-btn">
+                    📚 Study Help
+                </button>
+
+                <button class="side-btn">
+                    🧠 Ask Anything
+                </button>
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="creator-card">
+                    <span>Created by</span>
+                    <strong>Vinit Goswami</strong>
+                </div>
+
+                <div class="version">
+                    VINITX AI • v1.0
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Chat Area -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    <div class="logo small">V</div>
+                    <strong>VINITX AI</strong>
+                </div>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    AI Online
+                </div>
+
+            </header>
+
+
+            <!-- Chat -->
+            <section class="chat-box" id="chatBox">
+
+                <div class="welcome">
+
+                    <div class="welcome-logo">
+                        V
+                    </div>
+
+                    <h1>Hello, I'm <span>VINITX AI</span></h1>
+
+                    <p>
+                        Your intelligent AI assistant for coding,
+                        study, mathematics, technology and everyday questions.
+                    </p>
+
+                    <div class="suggestions">
+
+                        <button class="suggestion">
+                            💻 Explain Java if-else
+                        </button>
+
+                        <button class="suggestion">
+                            🧠 What can you do?
+                        </button>
+
+                        <button class="suggestion">
+                            📚 Help me study
+                        </button>
+
+                        <button class="suggestion">
+                            ✨ Write something for me
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Input Area -->
+            <div class="input-wrapper">
+
+                <div class="input-box">
+
+                    <textarea id="userInput" placeholder="Message VINITX AI..." rows="1"></textarea>
+
+                    <button id="sendBtn" class="send-btn">
+                        <span>➤</span>
+                    </button>
+
+                </div>
+
+                <div class="input-info">
+                    VINITX AI can make mistakes. Check important information.
+                </div>
+
+            </div>
+
+        </main>
+
     </div>
 
-    <div class="chat-box" id="chatBox">
-        <div class="bot-message">
-            Hello! 👋 How can I help you?
-        </div>
-    </div>
 
-    <div class="input-area">
-        <input
-            type="text"
-            id="userInput"
-            placeholder="Type your message...">
-
-        <button id="sendBtn">Send</button>
-    </div>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
