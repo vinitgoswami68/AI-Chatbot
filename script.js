@@ -35,46 +35,34 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-
-        const response = await fetch("http://localhost:3000/chat", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                message: message
-            })
-
-        });
+        const response = await fetch(
+            "https://vinitx-ai-backend.onrender.com/chat",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: message
+                })
+            }
+        );
 
         const data = await response.json();
 
         loadingMessage.remove();
 
-        // AI response
         const botMessage = document.createElement("div");
         botMessage.className = "bot-message";
-
-        if (data.reply) {
-            botMessage.innerText = data.reply;
-        } else {
-            botMessage.innerText =
-                "माफ़ कीजिए, मुझे जवाब नहीं मिल पाया।";
-        }
+        botMessage.innerText = data.reply || data.error ||
+            "माफ़ कीजिए, जवाब नहीं मिल पाया।";
 
         chatBox.appendChild(botMessage);
-
         chatBox.scrollTop = chatBox.scrollHeight;
 
     } catch (error) {
-
         console.error("Error:", error);
-
         loadingMessage.innerText =
             "VINITX AI से connection नहीं हो पाया।";
-
     }
 }
