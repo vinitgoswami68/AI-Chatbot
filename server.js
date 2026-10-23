@@ -35,11 +35,32 @@ app.post("/chat", async (req, res) => {
             });
         }
 
+        // Accept only a small, well-formed recent conversation history.
+        const history = Array.isArray(req.body.history)
+            ? req.body.history
+                .filter(item =>
+                    item &&
+                    (item.role === "user" || item.role === "model") &&
+                    typeof item.text === "string" &&
+                    item.text.trim().length > 0
+                )
+                .slice(-12)
+                .map(item => ({
+                    role: item.role,
+                    parts: [{ text: item.text.slice(0, 4000) }]
+                }))
+            : [];
+
+        const conversation = [
+            ...history,
+            { role: "user", parts: [{ text: message.slice(0, 4000) }] }
+        ];
+
         const response = await ai.models.generateContent({
 
             model: "gemini-3.6-flash",
 
-            contents: message,
+            contents: conversation,
 
             config: {
                 systemInstruction: `
