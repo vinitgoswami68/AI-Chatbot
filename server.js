@@ -8,7 +8,16 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
+
+// Render and other hosting platforms provide their own PORT.
+app.get("/", (_req, res) => {
+    res.json({ service: "VINITX AI backend", status: "ok" });
+});
+
+app.get("/health", (_req, res) => {
+    res.json({ status: "ok" });
+});
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
@@ -94,10 +103,12 @@ Do not simply repeat the user's message.
 
 });
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
-        "VINITX AI server running on http://localhost:3000"
+        "VINITX AI server running on port ${PORT}"
     );
 
 });
