@@ -37,7 +37,7 @@ app.post("/chat", async (req, res) => {
 
         const response = await ai.models.generateContent({
 
-            model: "gemini-3.8-flash",
+            model: "gemini-3.6-flash",
 
             contents: message,
 
@@ -108,7 +108,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
-        "VINITX AI server running on port ${PORT}"
+        `VINITX AI server running on port ${PORT}`
     );
 
 });
